@@ -7,6 +7,8 @@ The request_question() function reads a text file called 'questions.txt' and ext
 
 The code then opens a Chrome browser window and navigates to the Quora page. After a 35-second waiting time, an element on the page is clicked and the question obtained with the request_question() function is sent to a text box on the page. Then, a button is clicked to send the question and a similar process is followed to request answers to the question. This process is repeated 100 times. If exceptions occur during the process, an error message is printed and the next iteration of the loop is continued.
 
+Feel free to use
+
 # EXAMPLE 
 
 https://user-images.githubusercontent.com/104428151/208221313-317581cd-6587-40ec-955c-ccb9d1c78086.mp4
