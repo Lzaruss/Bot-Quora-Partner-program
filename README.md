@@ -11,3 +11,5 @@ The code then opens a Chrome browser window and navigates to the Quora page. Aft
 
 https://user-images.githubusercontent.com/104428151/208221313-317581cd-6587-40ec-955c-ccb9d1c78086.mp4
 
+![Captura JPG](https://user-images.githubusercontent.com/104428151/208221529-d535035e-7f73-4f9e-9d13-21e66d7a7867.png)
+
