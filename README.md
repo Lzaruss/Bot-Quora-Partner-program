@@ -9,6 +9,10 @@ The code then opens a Chrome browser window and navigates to the Quora page. Aft
 
 Feel free to use
 
+# Update 
+
+The only step you have to do is to start the script and login to your account, seconds later the script will automatically start asking questions (first of all you must have a file with questions, which in my case I have called questions.txt, 1 question per line).
+
 # EXAMPLE 
 
 https://user-images.githubusercontent.com/104428151/208221313-317581cd-6587-40ec-955c-ccb9d1c78086.mp4
