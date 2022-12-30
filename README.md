@@ -18,7 +18,7 @@ The only step you have to do is to start the script with neccesary arguments, se
 
 ```python script.py -n 50 -L```
 
--n is for the number of questions do you want for the script does
+-n is for the number of questions do you want for the script does <br>
 -L is because the login sometimes fails due to Captcha, and this argument pauses the automated login and you must manually login by bypassing the Captcha and pressing the login button.
 
 # EXAMPLE 
