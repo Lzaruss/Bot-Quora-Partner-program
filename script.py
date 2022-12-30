@@ -7,9 +7,9 @@ import argparse
 
 parser = argparse.ArgumentParser(add_help=False, description="Write -n or --num to set the number of questions you want the script to ask")
 parser.add_argument('-n', '--num', type=int, required=False, help="Number of questions you want for the script(if you dont say any number, by defect will be 10)")
-parser.add_argument('-h', '--help', action='help', help="Write -f or --func ['req', 'send'] to change the use of the script\nExample: python .\\test.py -f send")
+parser.add_argument('-L', '--login', action='store_true', required=False, help="argument to log in manually (to bypass captha manually) ")
+parser.add_argument('-h', '--help', action='help', help="If Login returns Captcha error put -L to login manually, -n for number of questions you want")
 args = parser.parse_args()
-func_arg = args.func
 
 def request_question():
     filename = 'preguntas.txt'
@@ -30,9 +30,11 @@ def iniciar_sesion():
 
     time.sleep(0.5)
     driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(credentials["password"])
-
-    time.sleep(0.5)
-    driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div/div/div/div/div/div[2]/div[2]/div[4]/button').click()
+    if args.login:
+        time.sleep(20)
+    else:
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div/div/div/div/div/div[2]/div[2]/div[4]/button').click()
 
 def cred_return():
     cred_file = open("./credentials.json", "r")
@@ -48,15 +50,14 @@ driver = webdriver.Chrome(options=options, executable_path=r'C:\WebDrivers\chrom
 driver.get("https://es.quora.com/")
 
 iniciar_sesion()
-
+preventiveNegativeQuestions = lambda num: 10 if num <= 0 else num
 #Por defecto pondremos 10 preguntas
 try:
     numPreguntas = args.num
+    num = preventiveNegativeQuestions(numPreguntas)
 except:
-    numPreguntas = 10
-preventiveNegativeQuestions = lambda num: 10 if num <= 0 else num
+    num = 10
 
-num = preventiveNegativeQuestions(numPreguntas)
 print(f"Num of questions: {num}")
 while num != 0:
     try:
@@ -95,3 +96,4 @@ while num != 0:
 
 time.sleep(5)
 driver.close()
+exit()
