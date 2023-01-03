@@ -35,6 +35,7 @@ def iniciar_sesion():
     else:
         time.sleep(1)
         driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div/div/div/div/div/div[2]/div[2]/div[4]/button').click()
+        time.sleep(2)
 
 def cred_return():
     cred_file = open("./credentials.json", "r")
@@ -50,17 +51,27 @@ driver = webdriver.Chrome(options=options, executable_path=r'C:\WebDrivers\chrom
 driver.get("https://es.quora.com/")
 
 iniciar_sesion()
-preventiveNegativeQuestions = lambda num: 10 if num <= 0 else num
+
+
+preventiveNegativeQuestions = lambda num: 20 if num <= 0 else num
 #Por defecto pondremos 10 preguntas
 try:
     numPreguntas = args.num
     num = preventiveNegativeQuestions(numPreguntas)
+    
 except:
-    num = 10
+    num = 20
 
 print(f"Num of questions: {num}")
+
+try:
+    driver.find_element(By.XPATH, '//*[@id="onetrust-accept-btn-handler"]').click()
+except:
+    pass
+
 while num != 0:
     try:
+        
         clickable = driver.find_element(By.XPATH, "//*[@id='mainContent']/div/div/div[1]/div/div/div[1]/div/div[2]")
         ActionChains(driver)\
                 .click(clickable)\
@@ -94,6 +105,6 @@ while num != 0:
     num -=1
     print(f"\rQuestions left: {num} ", end="")
 
-time.sleep(5)
+time.sleep(1)
 driver.close()
 exit()
